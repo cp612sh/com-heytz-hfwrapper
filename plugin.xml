@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin
+        xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com-heytz-hfwrapper"
+        version="0.0.1">
+
+    <name>hfwrapper</name>
+    <description>wrapper of the HF</description>
+    <license>MIT</license>
+    <keywords></keywords>
+
+    <repo>https://github.com/cp612sh/com-heytz-hfwrapper.git</repo>
+    <issue></issue>
+
+    <js-module src="www/ble.js" name="ble">
+        <clobbers target="ble"/>
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="HFWrapper">
+                <param name="android-package" value="com.heytz.cordova.HFWrapper"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!--<uses-permission android:name="android.permission.BLUETOOTH"/>-->
+            <!--<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>-->
+        </config-file>
+
+        <source-file src="src/android/HFWrapper.java"
+                     target-dir="src/com/heytz/cordova"/>
+    </platform>
+
+</plugin>
