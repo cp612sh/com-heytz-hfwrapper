@@ -13,8 +13,8 @@
     <repo>https://github.com/cp612sh/com-heytz-hfwrapper.git</repo>
     <issue></issue>
 
-    <js-module src="www/ble.js" name="ble">
-        <clobbers target="ble"/>
+    <js-module src="www/hfwrapper.js" name="hfwrapper">
+        <clobbers target="hfwrapper"/>
     </js-module>
 
     <platform name="android">
@@ -25,12 +25,9 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
-            <!--<uses-permission android:name="android.permission.BLUETOOTH"/>-->
-            <!--<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>-->
         </config-file>
 
-        <source-file src="src/android/HFWrapper.java"
-                     target-dir="src/com/heytz/cordova"/>
+        <source-file src="src/android/HFWrapper.java" target-dir="src/com/heytz/cordova"/>
     </platform>
 
 </plugin>
