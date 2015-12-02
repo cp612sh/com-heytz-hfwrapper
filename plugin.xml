@@ -28,6 +28,12 @@
         </config-file>
 
         <source-file src="src/android/HFWrapper.java" target-dir="src/com/heytz/cordova"/>
-    </platform>
+        <source-file src="src/android/AppInfo.java" target-dir="src/com/heytz/cordova"/>
+        <source-file src="src/android/ModuleInfo.java" target-dir="src/com/heytz/cordova"/>
+        <source-file src="src/android/UserInfo.java" target-dir="src/com/heytz/cordova"/>
 
+        <source-file src="libs/android-support-v4.jar" target-dir="libs"/>
+        <source-file src="libs/androidasync-2.1.6.jar" target-dir="libs"/>
+        <source-file src="libs/hiflying-iots-android-smartlink3.7.0.jar" target-dir="libs"/>
+    </platform>
 </plugin>
