@@ -28,7 +28,7 @@ import java.net.SocketException;
 public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
 
     private static final String TAG = "==HFWrapper==";
-    // todo :  update to domain name
+    //update to domain name
     public static final String AU_URI = "http://m2m.heytz.com/device/authorize";
 
     private CallbackContext airLinkCallbackContext;
@@ -75,7 +75,7 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
             return true;
         }
 
-        if (action.equals("dealloc")) {
+        if (action.equals("deallocate")) {
             this.dealloc();
             return true;
         }
