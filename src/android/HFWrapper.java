@@ -29,7 +29,7 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
 
     private static final String TAG = "==HFWrapper==";
     // todo :  update to domain name
-    public static final String AU_URI = "http://192.168.1.128:3000/device/authorize";
+    public static final String AU_URI = "http://m2m.heytz.com/device/authorize";
 
     private CallbackContext airLinkCallbackContext;
     private Context context;
