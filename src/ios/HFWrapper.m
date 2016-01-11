@@ -9,7 +9,7 @@
 }
 @property (nonatomic, strong) NSTimer *paintingTimer;
 
-- (void)startHFWrapper:(CDVInvokedUrlCommand*)command;
+- (void)start:(CDVInvokedUrlCommand*)command;
 @end
 
 @implementation HFWrapper{
@@ -22,7 +22,7 @@ BOOL isconnecting;
     NSString *errorMessage;
 }
 
-- (void)startHFWrapper:(CDVInvokedUrlCommand*)command
+- (void)start:(CDVInvokedUrlCommand*)command
 {
 
     // Do any additional setup after loading the view, typically from a nib.
