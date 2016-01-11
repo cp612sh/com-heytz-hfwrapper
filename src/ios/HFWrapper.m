@@ -10,6 +10,7 @@
 @property (nonatomic, strong) NSTimer *paintingTimer;
 
 - (void)start:(CDVInvokedUrlCommand*)command;
+- (void)deallocate:(CDVInvokedUrlCommand*)command;
 @end
 
 @implementation HFWrapper{
@@ -28,15 +29,14 @@ BOOL isconnecting;
     // Do any additional setup after loading the view, typically from a nib.
     smtlk = [HFSmartLink shareInstence];
     smtlk.isConfigOneDevice = true;
-    //smtlk.waitTimers=30;
+    smtlk.waitTimers=30;
     isconnecting = false;
-    NSString * ssid=command.arguments[0];
-    NSString * pwd=command.arguments[1];
+    NSString * ssid=command.arguments[4];
+    NSString * pwd=command.arguments[5];
 
     publicCommand=command;
 
     [smtlk startWithKey:pwd processblock:^(NSInteger process) {
-       // self.progress.progress = process/18.0;
     } successBlock:^(HFSmartLinkDeviceInfo *dev) {
 
         //ret =
@@ -47,28 +47,26 @@ BOOL isconnecting;
          //@"",@"Info",
          //@"",@"error",
          //nil];
-         ret =dev.mac;
+        ret =dev.mac;
+        if(ret!=nil){
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:ret];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:publicCommand.callbackId];
+        }
 
     } failBlock:^(NSString *failmsg) {
-                 errorMessage=failmsg;
-
+            errorMessage=failmsg;
+        
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorMessage];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:publicCommand.callbackId];
+        
         } endBlock:^(NSDictionary *deviceDic) {
-         if(errorMessage!=nil){
-                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorMessage];
-                 [self.commandDelegate sendPluginResult:pluginResult callbackId:publicCommand.callbackId];
-         }
-         if(ret!=nil){
-                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:ret];
-                 [self.commandDelegate sendPluginResult:pluginResult callbackId:publicCommand.callbackId];
-
-          }
-          isconnecting  = false;
-
-//            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:deviceDic];
-//            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-//            isconnecting  = false;
+        
+        isconnecting  = false;
+        errorMessage=nil;
+        ret=nil;
     }];
 
 
 }
+-(void)deallocate:(CDVInvokedUrlCommand*)command{}
 @end
