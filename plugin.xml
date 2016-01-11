@@ -44,7 +44,7 @@
         </config-file>
         <source-file src="SmartLinkStaticLIb/HFSmartLink.h"/>
         <source-file src="SmartLinkStaticLIb/HFSmartLinkDeviceInfo.h"/>
-        <source-file src="src/ios/smartlink.m"/>
+        <source-file src="src/ios/HFWrapper.m"/>
         <source-file framework="true" src="libSmartLinkStaticLib.a"/>
         <framework src="libSmartLinkStaticLib.a"/>
     </platform>
