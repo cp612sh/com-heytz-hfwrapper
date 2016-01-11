@@ -38,8 +38,8 @@
     </platform>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
-            <feature name="smartlink">
-                <param name="ios-package" value="smartlink"/>
+            <feature name="HFWrapper">
+                <param name="ios-package" value="HFWrapper"/>
             </feature>
         </config-file>
         <source-file src="SmartLinkStaticLIb/HFSmartLink.h"/>
