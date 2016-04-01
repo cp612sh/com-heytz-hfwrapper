@@ -255,18 +255,19 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
         // todo : Temporally disable the activate && authorize, raise the message (mac string only)
         String mac = smartLinkedModule.getMac();
         Log.d(TAG, mac);
+
+
+         try {
+             ModuleInfo moduleInfo = new ModuleInfo(smartLinkedModule.getModuleIP(), 8000);
+             AppInfo appInfo = new AppInfo(appId, productKey);
+             UserInfo userInfo = new UserInfo(userToken, uid);
+             sendGetDidCommand(moduleInfo, appInfo, userInfo);
+         } catch (Exception e) {
+             Log.e(TAG, e.toString());
+         }
         PluginResult result = new PluginResult(PluginResult.Status.OK, mac);
         airLinkCallbackContext.sendPluginResult(result);
         return;
-
-//         try {
-//             ModuleInfo moduleInfo = new ModuleInfo(smartLinkedModule.getModuleIP(), 8000);
-//             AppInfo appInfo = new AppInfo(appId, productKey);
-//             UserInfo userInfo = new UserInfo(userToken, uid);
-//             sendGetDidCommand(moduleInfo, appInfo, userInfo);
-//         } catch (Exception e) {
-//             Log.e(TAG, e.toString());
-//         }
     }
 
     @Override
