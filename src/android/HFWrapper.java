@@ -6,6 +6,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.format.Formatter;
 import android.util.Log;
+import com.hiflying.smartlink.ISmartLinker;
 import com.hiflying.smartlink.OnSmartLinkListener;
 import com.hiflying.smartlink.SmartLinkedModule;
 import com.hiflying.smartlink.v7.MulticastSmartLinker;
