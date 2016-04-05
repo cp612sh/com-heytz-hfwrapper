@@ -47,7 +47,7 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
         // your init code here
         context = cordova.getActivity().getApplicationContext();
         // init SmartLinker
-        snifferSmartLinker = MulticastSmartLinker.getInstence();
+        snifferSmartLinker = MulticastSmartLinker.getInstance();
     }
 
     @Override
