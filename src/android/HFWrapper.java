@@ -8,7 +8,7 @@ import android.text.format.Formatter;
 import android.util.Log;
 import com.hiflying.smartlink.OnSmartLinkListener;
 import com.hiflying.smartlink.SmartLinkedModule;
-import com.hiflying.smartlink.v3.SnifferSmartLinker;
+import com.hiflying.smartlink.v7.MulticastSmartLinker;
 import com.koushikdutta.async.http.AsyncHttpClient;
 import com.koushikdutta.async.http.AsyncHttpPost;
 import com.koushikdutta.async.http.AsyncHttpResponse;
@@ -34,7 +34,7 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
     private CallbackContext airLinkCallbackContext;
     private Context context;
     private String appId;
-    private SnifferSmartLinker snifferSmartLinker;
+    private ISmartLinker snifferSmartLinker;
     private boolean mIsConnecting = false;
     private String productKey;
     private String userToken;
@@ -46,7 +46,7 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
         // your init code here
         context = cordova.getActivity().getApplicationContext();
         // init SmartLinker
-        snifferSmartLinker = SnifferSmartLinker.getInstence();
+        snifferSmartLinker = MulticastSmartLinker.getInstence();
     }
 
     @Override
