@@ -50,6 +50,7 @@ BOOL isconnecting;
         ret =dev.mac;
         if(ret!=nil){
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:ret];
+            [smtlk closeWithBlock:nil];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:publicCommand.callbackId];
         }
 
@@ -57,6 +58,7 @@ BOOL isconnecting;
             errorMessage=failmsg;
         
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorMessage];
+        [smtlk closeWithBlock:nil];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:publicCommand.callbackId];
         
         } endBlock:^(NSDictionary *deviceDic) {
@@ -68,5 +70,7 @@ BOOL isconnecting;
 
 
 }
--(void)deallocate:(CDVInvokedUrlCommand*)command{}
+-(void)deallocate:(CDVInvokedUrlCommand*)command{
+    [smtlk closeWithBlock:nil];
+}
 @end

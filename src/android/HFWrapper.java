@@ -258,15 +258,16 @@ public class HFWrapper extends CordovaPlugin implements OnSmartLinkListener {
         Log.d(TAG, mac);
 
 
-         try {
-             ModuleInfo moduleInfo = new ModuleInfo(smartLinkedModule.getModuleIP(), 8000);
-             AppInfo appInfo = new AppInfo(appId, productKey);
-             UserInfo userInfo = new UserInfo(userToken, uid);
-             sendGetDidCommand(moduleInfo, appInfo, userInfo);
-         } catch (Exception e) {
-             Log.e(TAG, e.toString());
-         }
+        try {
+//             ModuleInfo moduleInfo = new ModuleInfo(smartLinkedModule.getModuleIP(), 8000);
+//             AppInfo appInfo = new AppInfo(appId, productKey);
+//             UserInfo userInfo = new UserInfo(userToken, uid);
+//             sendGetDidCommand(moduleInfo, appInfo, userInfo);
+        } catch (Exception e) {
+            Log.e(TAG, e.toString());
+        }
         PluginResult result = new PluginResult(PluginResult.Status.OK, mac);
+        this.dealloc();
         airLinkCallbackContext.sendPluginResult(result);
         return;
     }
