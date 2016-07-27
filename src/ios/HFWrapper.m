@@ -47,7 +47,8 @@ BOOL isconnecting;
          //@"",@"Info",
          //@"",@"error",
          //nil];
-        ret =dev.mac;
+        //ret =dev.mac;
+        ret =dev.ip;
         if(ret!=nil){
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:ret];
             [smtlk stopWithBlock: (SmartLinkStopBlock)^{
